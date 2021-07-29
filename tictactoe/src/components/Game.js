@@ -54,7 +54,7 @@ const Game = () => {
                 <h3>
                     {winner ? "Winner: " + winner : "Next Player: " + currentPlayerTurn}
                 </h3>
-                </div>
+            </div>
         </>
     )
 }
