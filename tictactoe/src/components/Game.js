@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { calculateWinner } from "../helper";
 import Board from "./Board";
+import Coordinates from "./Coordinates.js";
 
 const Game = () => {
     // these are hooks
@@ -30,7 +31,7 @@ const Game = () => {
         setIsXNext(step % 2 === 0);
     }
 
-    // implicit return but still with return statement...
+    // implicit return 
     const renderMoves = () => (
         history.map((_step, move) => {
             const destination = move ? `Go to move #${move}` : "Go to Start";
@@ -43,17 +44,25 @@ const Game = () => {
     )
 
     return (
-        <>
-            <h1>React Tic Tac Toe - With Hooks</h1>
-            <Board squares={history[stepNumber]} onClick={handleClick} />
-            <div className="info-wrapper">
-                <div>
-                    <h3>History</h3>
-                    {renderMoves()}
+        <>  
+            <div>
+                <div className='rowA'>
+                    <div>
+                        <h1>React Tic Tac Toe - With Hooks</h1>
+                        <Board squares={history[stepNumber]} onClick={handleClick} />
+                        <div className="info-wrapper">
+                            <div>
+                                <h3>History</h3>
+                                {renderMoves()}
+                            </div>
+                            <h3>
+                                {winner ? "Winner: " + winner : "Next Player: " + currentPlayerTurn}
+                            </h3>
+                        </div>
+                    </div>
+                    <Coordinates/>
                 </div>
-                <h3>
-                    {winner ? "Winner: " + winner : "Next Player: " + currentPlayerTurn}
-                </h3>
+                
             </div>
         </>
     )
